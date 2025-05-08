@@ -19,6 +19,7 @@
             bookList = new ArrayList<>();
         }
     %>
+    <h3>Quản lý sách</h3>
     <form action="BookServlet" method="post">
         <label for="title">Tên sách: </label>
         <input type="text" name="title" id="title">

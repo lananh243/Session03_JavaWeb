@@ -45,7 +45,7 @@
                 <td><%= product.getId()%></td>
                 <td><%= product.getName()%></td>
                 <td><%= product.getPrice()%></td>
-                <td style="text-center">
+                <td>
                     <form action="addToCart.jsp" method="post">
                         <input type="hidden" name="id" value="<%= product.getId() %>">
                         <input type="submit" value="Thêm vào giỏ hàng">

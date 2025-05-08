@@ -20,7 +20,7 @@ public class UserServlet extends HttpServlet {
             String email = request.getParameter("email");
             User user = new User(userManager.getNextId(), name, email);
             userManager.addUser(user);
-        } else if ("remove".equals(action)) {
+        } else if ("delete".equals(action)) {
             int id = Integer.parseInt(request.getParameter("id"));
             userManager.removeUser(id);
         }

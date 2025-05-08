@@ -16,11 +16,7 @@ public class UserManager {
     }
 
     public void removeUser(int id) {
-        for (User user : userList) {
-            if (user.getId() == id) {
-                userList.remove(user);
-            }
-        }
+        userList.removeIf(user -> user.getId() == id);
     }
 
     public int getNextId() {

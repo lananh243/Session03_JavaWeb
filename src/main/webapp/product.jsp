@@ -18,8 +18,6 @@
     <h4>Quản Lý Sản Phẩm</h4>
     <b>Thêm Sản Phẩm</b>
     <form action="product.jsp" method="post">
-        <label for="id">ID</label><br>
-        <input type="number" name="id" id="id" required><br>
 
         <label for="productName">Tên sản phẩm</label><br>
         <input type="text" name="productName" id="productName" required><br>
@@ -50,7 +48,7 @@
         }
 
         if ("POST".equalsIgnoreCase(request.getMethod())) {
-            int id = Integer.parseInt(request.getParameter("id"));
+            int id = productList.size() + 1;
             String productName = request.getParameter("productName");
             double price = Double.parseDouble(request.getParameter("price"));
             String description = request.getParameter("description");

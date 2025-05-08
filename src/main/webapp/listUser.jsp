@@ -13,36 +13,53 @@
     <title>Title</title>
 </head>
 <body>
-    <%
-        List<User> userList = (List<User>) request.getAttribute("userList");
-        if (userList == null) {
-            userList = new ArrayList<>();
-        }
-    %>
+<%
+    List<User> userList = (List<User>) request.getAttribute("userList");
+    if (userList == null) {
+        userList = new ArrayList<>();
+    }
+%>
 
-    <h1>Thêm Người Dùng</h1>
-    <form action="UserServlet" method="post">
-        <label for="name">Tên:</label>
-        <input type="text" id="name" name="name" required><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
-        <input type="submit" value="Thêm Người Dùng">
-    </form>
-    <h3>Danh sách người dùng</h3>
-    <ul>
+<h1>Thêm Người Dùng</h1>
+<form action="UserServlet" method="post">
+    <input type="hidden" name="action" value="add">
+    <label for="name">Tên:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+    <input type="submit" value="Thêm Người Dùng">
+</form>
+
+<h3>Danh sách người dùng</h3>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tên</th>
+            <th>Email</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
         <%
             for (User user : userList) {
         %>
-        <li>
-            Tên <%= user.getName() %> - Email: <%= user.getEmail() %>
-            <form action="UserServlet" method="post" style="display:inline;">
-                <input type="hidden" name="id" value="<%= user.getId() %>">
-                <input type="submit" value="Xóa" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">
-            </form>
-        </li>
+            <tr>
+                <td><%= user.getId()%></td>
+                <td><%= user.getName()%></td>
+                <td><%= user.getEmail()%></td>
+                <td>
+                    <form action="UserServlet" method="post" style="display:inline;">
+                        <input type="hidden" name="action" value="delete">
+                        <input type="hidden" name="id" value="<%= user.getId() %>">
+                        <input type="submit" value="Xóa" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">
+                    </form>
+                </td>
+            </tr>
         <%
             }
         %>
-    </ul>
+    </tbody>
+</table>
 </body>
 </html>
